@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b3eef6e8-a30e-4275-935c-3a977402ed68" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/JPARegisterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/JPARegisterRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/RegisterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/RegisterRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/EmailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/EmailUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/ReadMe.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/AdminHome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/BuyerHome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/BuyerProfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/CropProfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/CropsToFarmer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/FarmerProfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/Rating.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/Trends.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/UncheckedCropProfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/UserHome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/UserHome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/ViewingTrends.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/allCropsBuyer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/allCropsFarmer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/allPastBids.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/allRecentCrops.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/bids.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/closeDeal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/closedCrop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/closedDeals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/cropBid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/cropCheck.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/cropsIn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/cropsToBuyer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/cropsToCheck.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/deliverCrop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/grievance.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/listCropTypes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/listLocations.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/nav.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/notification.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/pastBids.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/payTotal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/payment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/rating.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/recentCrops.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/updateBid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/viewBill.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/viewBuyer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/User/viewCrop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/AdminLogin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/Nav.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/app.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/crop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/forgotPassword.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/resendVerify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/resetPassword.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/signup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/tandc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/tandcSU.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/updateProfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/home/verifyEmail.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/images/bgimage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/images/f1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/images/f2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/images/f3.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/images/userhome.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/components/images/userhome1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/src/serviceWorker.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1rYlPJgVg85mbsEVqts64XliI8W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b3eef6e8-a30e-4275-935c-3a977402ed68" name="Default Changelist" comment="" />
+      <created>1619160879673</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1619160879673</updated>
+    </task>
+    <servers />
+  </component>
+</project>
