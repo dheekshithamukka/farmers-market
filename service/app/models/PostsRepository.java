@@ -23,4 +23,6 @@ public interface PostsRepository {
 
     CompletionStage<Stream<Posts>> listallposts(Long uid);
 
+    CompletionStage<Stream<Tags>> getTags(Long id);
+
 }

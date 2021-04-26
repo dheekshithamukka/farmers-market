@@ -47,6 +47,7 @@ public class JPAInterestsRepository implements InterestsRepository {
     private <T> T wrap(Function<EntityManager, T> function) {
         return jpaApi.withTransaction(function);
     }
+
     @Override
     public CompletionStage<Interests> add(Interests interests) {
         System.out.println("Inside add function");
@@ -56,6 +57,31 @@ public class JPAInterestsRepository implements InterestsRepository {
         em.persist(interests);
         return interests;
     }
+
+    @Override
+    public CompletionStage<String> deleteInterests(Long uid) {
+        System.out.println("In override method");
+        return supplyAsync(() -> wrap(em -> deleteInterests(em, uid)), executionContext);
+    }
+
+    private String deleteInterests(EntityManager em, Long uid) {
+        int i = em.createQuery("delete from Interests i where i.uid=:uid").setParameter("uid",uid).executeUpdate();
+        if(i!=0) {
+            return "Successful";
+        } else {
+            return "Not Successful";
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 

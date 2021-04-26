@@ -63,8 +63,9 @@ GET     /assets/*file                   controllers.Assets.at(path="/public", fi
 
 POST    /createPost                     controllers.PostsController.createPost()
 GET     /viewPosts/:id/:role            controllers.PostsController.viewPosts(id: Long, role: String)
-GET     /getTags/:id                    controllers.RegisterController.getTags(id: Long)
+GET     /getTags/:id                    controllers.PostsController.getTags(id: Long)
 GET     /getUserId/:email               controllers.RegisterController.getUserId(email: String)
 POST    /registerInterests              controllers.InterestsController.addInterests()
 POST    /registerTags                   controllers.TagsController.addTags()
 GET     /newsfeed/:id                   controllers.PostsController.newsfeed(id: Long)
+POST    /updateInterests                controllers.InterestsController.updateInterests()

@@ -5,16 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3eef6e8-a30e-4275-935c-3a977402ed68" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../farmersmarket/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../farmersmarket/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../farmersmarket/src/components/User/CreatePost.js" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/src/components/User/CreatePost.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../farmersmarket/src/components/User/Newsfeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/src/components/User/Newsfeed.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../farmersmarket/src/components/User/UserHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/src/components/User/UserHome.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../farmersmarket/src/components/User/ViewPosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/src/components/User/ViewPosts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/InterestsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/InterestsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/PostsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/PostsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Posts.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Posts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/InterestsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/InterestsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/JPAInterestsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/JPAInterestsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/JPAPostsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/JPAPostsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/JPARegisterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/JPARegisterRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/PostsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/PostsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/RegisterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/RegisterRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,5 +61,16 @@
       <updated>1619160879673</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/models/Register.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

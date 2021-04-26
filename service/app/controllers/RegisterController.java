@@ -38,12 +38,7 @@ public class RegisterController extends Controller {
         this.ec = ec;
     }
 
-    public CompletionStage<Result> getTags(Long id) {
-        return registerRepository.getTags(id).thenApplyAsync(interests -> {
-            //System.out.println(toJson(interests));
-            return ok(toJson(interests));
-        }, ec.current());
-    }
+
 
     public CompletionStage<Result> getUserId(String email) {
         return registerRepository.getUserId(email).thenApplyAsync(userId -> {

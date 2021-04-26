@@ -110,6 +110,16 @@ public class JPAPostsRepository implements PostsRepository {
         return postsFromPosts.stream();
     }*/
 
+    @Override
+    public CompletionStage<Stream<Tags>> getTags(Long id) {
+        return supplyAsync(() -> wrap(em -> getTags(em, id)), executionContext);
+    }
+
+    private Stream<Tags> getTags(EntityManager em, Long id) {
+        List<Tags> tags = em.createQuery("select r from Tags r where r.postId=:id", Tags.class).setParameter("id", id).getResultList();
+        return tags.stream();
+    }
+
 
     private <T> T wrap(Function<EntityManager, T> function) {
         return jpaApi.withTransaction(function);

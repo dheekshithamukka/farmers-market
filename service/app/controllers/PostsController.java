@@ -78,4 +78,11 @@ public class PostsController extends Controller {
         }, ec.current());
     }
 
+    public CompletionStage<Result> getTags(Long id) {
+        return postsRepository.getTags(id).thenApplyAsync(tagsStream -> {
+            //System.out.println(toJson(interests));
+            return ok(toJson(tagsStream.collect(Collectors.toList())));
+        }, ec.current());
+    }
+
 }

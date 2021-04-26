@@ -13,5 +13,8 @@ public interface InterestsRepository {
 
     CompletionStage<Interests> add(Interests interests);
 
+    CompletionStage<String> deleteInterests(Long uid);
+
+
 
 }

@@ -52,4 +52,20 @@ public class InterestsController extends Controller {
         }
         return ok("created");
     }
+
+    public Result updateInterests(){
+        JsonNode js = request().body().asJson();
+        interestsRepository.deleteInterests(js.get("uid").asLong()).thenApplyAsync(p -> {
+            if(p.equals("Successful")) {
+                for (JsonNode interest : js.withArray("interests")) {
+                    Interests interests = new Interests();
+                    interests.setUid(js.get("uid").asLong());
+                    interests.setInterests(interest.asText());
+                    interestsRepository.add(interests);
+                }
+            }
+            return ok("Successful");
+        }, ec.current());
+        return ok("Successful");
+    }
 }

@@ -172,3 +172,18 @@ color: #020202;
 .yt-link {
   margin-left: 10%;
 }
+
+
+.tags {
+  background-color: #00A228;
+  /* background-color: #8686D2; */
+  border-radius: 20px;
+  padding-top: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 4px;
+  font-size: 14px;
+  font-family: "Roboto";
+  color: white;
+
+}

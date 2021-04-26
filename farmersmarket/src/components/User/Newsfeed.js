@@ -15,24 +15,16 @@ class Newsfeed extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //tags: '',
             'posts': [],
+            'tags': [],
+            postTags: [],
             id: this.props.match.params.id,
             role: this.props.match.params.role
 
         };
     }
     async componentDidMount() {
-
-        /*await fetch('http://localhost:9000/getTags/'+this.state.id)
-        .then(response => response.json())
-        .then(data => {
-            // console.log(data);
-            // console.log(data.interests)
-            this.setState({ tags : data.interests })
-            });
-            console.log(this.state.tags)*/
-
+        let postVar = [];
         const url = 'http://localhost:9000/newsfeed/' + this.props.match.params.id  //+ this.state.tags
         console.log(url)
         let headers = new Headers();
@@ -48,36 +40,79 @@ class Newsfeed extends Component {
             body: JSON.stringify(body)
         })
             .then(response => response.json())
-            .then(response => this.setState({ 'posts': response }));
-        // .then(response => console.log(this.state.posts.length));
-        console.log(this.state.posts)
+            .then(response => {
+                postVar = response;
+            });
+
+            for (let i = 0; i < postVar.length; i++) {
+                let postId = postVar[i].id;
+                const url1 = 'http://localhost:9000/getTags/' + postId 
+                let headers = new Headers();
+                headers.append('Content-Type', 'application/json');
+                headers.append('Accept', 'application/json');
+                headers.append('Access-Control-Allow-origin', url1);
+                headers.append('Access-Control-Allow-Credentials', 'true');
+                headers.append('POST', 'GET');
+                await fetch(url1, {
+                    headers: headers,
+                    method: 'GET',
+                    body: JSON.stringify(body)
+                })
+                    .then(response => response.json())
+                    .then(response => this.setState({'posts': postVar,'tags': [...this.state.tags, response]}));
+                }
+                let tagsArray = [];
+            
+
+        for(let i=0;i<this.state.tags.length;i++) {
+            let tagsString = "";
+            for(let j=0;j<this.state.tags[i].length;j++) {
+                tagsString += this.state.tags[i][j].tags + "\n";
+            }
+            tagsArray[i] = tagsString.replace(/\n*$/, "");
+        }
+        for(let i=0;i<this.state.posts.length;i++) {
+         this.setState({postTags: [...this.state.postTags, [this.state.posts[i], tagsArray[i]]]});
+        }
+
+        console.log(this.state.postTags)
+    
     }
 
+
     renderList(farmer) {
-        return this.state.posts.map(function (item) {
+        return this.state.postTags.map(function (item) {
             console.log("in render list: " + farmer);
+            
             return (
                 <div className="mb-3">
-                    <div key={item.id} className="auth-inner" >
-
-                        <h1> {item.title} </h1>  <hr />
-                        {item.body} <br /><br />
-                        {item.imageUrl
+                    <div key={item[0].id} className="auth-inner" >
+                    
+                        <h1> {item[0].title} </h1>  <hr />
+                        {item[0].body}
+                        {item[0].imageUrl
                             ?
-                            <center><img src={item.imageUrl} alt="No image" className="imageUrl" />
+                            <center><br /><br /><img src={item[0].imageUrl} alt="No image" className="imageUrl" />
                             </center>
 
                             :
-                            <br />
+                            <></>
                         }
-                            <br />
+                        <br />
 
-                            {item.link 
-                        ?
-                        <iframe className="yt-link" width="510" height="315" src={`https://www.youtube.com/embed/${item.link}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        :
-                        <br /> 
+                        {item[0].link
+                            ?
+                            <iframe className="yt-link" width="510" height="315" src={`https://www.youtube.com/embed/${item.link}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            :
+                            <></>
                         }
+                        <br />
+
+                        <br />
+
+
+                        {item[1].split("\n").map(str => <span className="mr-3 tags">{str}</span>)}
+
                     </div>
                 </div>
             )

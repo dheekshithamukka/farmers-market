@@ -27,7 +27,6 @@ public interface RegisterRepository {
 
     CompletionStage<String> verify(Long id);
 
-    CompletionStage<JsonNode> getTags(Long id);
 
     CompletionStage<JsonNode> getUserId(String email);
 

@@ -16,11 +16,13 @@ class ViewPosts extends Component {
         this.state = {
             'posts': [],
             'tags': [],
+            postTags: [],
             id: this.props.match.params.id,
             role: this.props.match.params.role
         };
     }
     async componentDidMount() {
+        let postVar = [];
         const url = 'http://localhost:9000/viewPosts/' + this.state.id + '/' + this.state.role
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -35,15 +37,12 @@ class ViewPosts extends Component {
             body: JSON.stringify(body)
         })
             .then(response => response.json())
-            .then(response => this.setState({ 'posts': response }));
-        // .then(response => console.log(this.state.posts.length));
-        console.log(this.state.posts)
+            .then(response => {
+                postVar = response;
+            });
 
-        for (let i = 0; i < this.state.posts.length; i++) {
-            let postId = this.state.posts[i].id;
-            console.log(postId);
-            // this.setState({'tags': [...this.state.tags, "Hello"]});
-            // console.log(this.state.tags);
+        for (let i = 0; i < postVar.length; i++) {
+            let postId = postVar[i].id;
             const url1 = 'http://localhost:9000/getTags/' + postId 
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
@@ -51,45 +50,61 @@ class ViewPosts extends Component {
             headers.append('Access-Control-Allow-origin', url1);
             headers.append('Access-Control-Allow-Credentials', 'true');
             headers.append('POST', 'GET');
-
+        // console.log(postVar);
             await fetch(url1, {
                 headers: headers,
                 method: 'GET',
                 body: JSON.stringify(body)
             })
                 .then(response => response.json())
-                .then(response => this.setState({'tags': [...this.state.tags, "Hello"]}));
+                .then(response => this.setState({'posts': postVar,'tags': [...this.state.tags, response]}));
+            }
+
+        let tagsArray = [];
+            
+
+        for(let i=0;i<this.state.tags.length;i++) {
+            let tagsString = "";
+            for(let j=0;j<this.state.tags[i].length;j++) {
+                tagsString += this.state.tags[i][j].tags + "\n";
+            }
+            tagsArray[i] = tagsString.replace(/\n*$/, "");
         }
-
-
+        console.log(tagsArray)
+        for(let i=0;i<this.state.posts.length;i++) {
+         this.setState({postTags: [...this.state.postTags, [this.state.posts[i], tagsArray[i]]]});
+        }
     }
 
     renderList(farmer) {
-        // console.log(this.state.posts)
-        return this.state.posts.map(function (item) {
+        return this.state.postTags.map(function (item) {
             console.log("in render list: " + farmer);
+            
             return (
                 <div className="mb-3">
-                    <div key={item.id} className="auth-inner" >
-
-                        <h1> {item.title} </h1>  <hr />
-                        {item.body} <br /><br />
-                        {item.imageUrl
+                    <div key={item[0].id} className="auth-inner" >
+                    
+                        <h1> {item[0].title} </h1>  <hr />
+                        {item[0].body} <br />
+                        
+                        {item[0].imageUrl
                             ?
-                            <center><img src={item.imageUrl} alt="No image" className="imageUrl" />
+                            <center><br /><br /><img src={item[0].imageUrl} alt="No image" className="imageUrl" />
                             </center>
 
                             :
-                            <br />
+                            <></>
                         }
                         <br />
 
-                        {item.link
+                        {item[0].link
                             ?
                             <iframe className="yt-link" width="510" height="315" src={`https://www.youtube.com/embed/${item.link}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             :
-                            <br />
+                            <></>
                         }
+
+                        {item[1].split("\n").map(str => <span className="mr-3 tags">{str}</span>)}
 
                     </div>
                 </div>
@@ -114,11 +129,6 @@ class ViewPosts extends Component {
                 <br />
 
                 {this.state.posts.length == 0 && <h3 className="auth-inner">No Posts Yet</h3>}
-                {/* {this.state.posts.length > 0 &&
-                    <Row>
-                        <Col xs="1">CROP</Col><Col xs="1"></Col><Col xs="2">AREA</Col><Col xs="2">LOCATION</Col><Col xs="1"></Col><Col xs="2">PRICE</Col><Col xs="3">ACTION</Col>
-                    </Row>
-                    } */}
                 <hr />
                 <ul className="mt-3">
                     {this.renderList(this.state.id)}
