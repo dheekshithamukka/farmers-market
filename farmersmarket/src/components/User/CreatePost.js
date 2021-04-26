@@ -3,6 +3,7 @@ import '../images/bgimage.css';
 import './UserHome.css'
 import Nav from './nav.js';
 import Select from 'react-select';
+import Axios from "axios";
 
 var body;
 var urole;
@@ -27,13 +28,19 @@ class CreatePost extends Component {
             role: this.props.match.params.role,
             title: '',
             body: '',
-            postId:'',
-            tags: []
+            postId: '',
+            tags: [],
+            currentFile: undefined,
+            imageUrl: '',
+            link: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleTagsChange = this.handleTagsChange.bind(this);
+        this.handleLinkChange = this.handleLinkChange.bind(this);
+        this.selectFile = this.selectFile.bind(this);
+
     }
 
     handleTitleChange(event) {
@@ -48,6 +55,11 @@ class CreatePost extends Component {
             body: event.target.value
         })
     }
+    handleLinkChange = event => {
+        this.setState({
+            link: event.target.value
+        })
+    }
 
     handleTagsChange(event) {
         const target = event.target;
@@ -60,15 +72,44 @@ class CreatePost extends Component {
         }
     }
 
+    selectFile(event) {
+        this.setState({
+            currentFile: event.target.files[0],
+        });
+    }
+
+
+
     async handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state)
+        const formData = new FormData();
+        if(this.state.currentFile) {
+        formData.append("file", this.state.currentFile);
+        formData.append("upload_preset", "FarmersMarket");
+
+        await Axios.post("https://api.cloudinary.com/v1_1/dpt8wpg3a/image/upload", formData).then((response => {
+            // console.log(response);
+            this.setState({
+                imageUrl: response.data.url
+            })
+        }))
+    }
+
+    if(this.state.link) {
+        var url = this.state.link;
+
+        var video_id = url.split("v=")[1].substring(0, 11)
+    }
+        // console.log(video_id);
+        // console.log(this.state)
         var body = {
             uid: this.state.uid,
             role: this.state.role,
             title: this.state.title,
             body: this.state.body,
-            tags: this.state.tags
+            tags: this.state.tags,
+            imageUrl: this.state.imageUrl,
+            link: video_id
         }
         console.log(body);
         if (this.state.title == "") {
@@ -89,24 +130,24 @@ class CreatePost extends Component {
             headers.append('Access-Control-Allow-Credentials', 'true');
             headers.append('POST', 'GET');
 
-           await fetch(url, {
+            await fetch(url, {
                 headers: headers,
                 method: 'POST',
                 body: JSON.stringify(body)
             })
-                /*.then(response => {
-                    if (response.ok) {
-                        //alert("Post created successsfully.");
-                        // document.getElementById("title").value = "";
-                        // document.getElementById("body").value = "";
-                    }
-                })*/
-            .then(response => response.json())
-            .then(data => {
-                this.setState({postId: data.postId })
-            });
+
+                .then(response => response.json())
+                .then(data => {
+                    this.setState({ postId: data.postId })
+                });
         }
         console.log(this.state.postId)
+
+
+
+        // console.log(this.state.currentFile);
+
+
         var tagsArray = [];
         Object.entries(this.state.tags).map(([key, value]) => {
             tagsArray.push(key);
@@ -116,7 +157,7 @@ class CreatePost extends Component {
         var body1 = {
             uid: this.state.uid,
             tags: tagsArray,
-            postId:this.state.postId
+            postId: this.state.postId
         }
         const url1 = 'http://localhost:9000/registerTags';
         let headers = new Headers();
@@ -148,7 +189,6 @@ class CreatePost extends Component {
         return (<div className="bg">
             <Nav uid={this.state.uid} role={this.state.role} />
             <br /><br /><br />
-
             <div className="auth-wrapper">
                 <div className="auth-inner">
 
@@ -163,43 +203,59 @@ class CreatePost extends Component {
                                     required="required"
                                     className="form-control"
                                     onChange={this.handleTitleChange}
-                                    />
+                                />
                             </div>
                         </div>
 
                         <div className="form-group">
-                        <label className="col-sm-2 control-label required" htmlFor="blog_post_title">Body</label>
-                        <div className="col-sm-10">
-                            <textarea rows="5" cols="70" className="form-control" name="body" id="body"
-                                 onChange={this.handleBodyChange} /><br />
-                        </div>
-                        </div>
-                        
-                    <div className="form-group">
-                    <label className="col-sm-2 control-label required" htmlFor="blog_post_title">Tags</label><br></br>
-                        <div className="col-sm-10">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="hobbies" id="inlineCheckboxh1" value="Reading" onChange={this.handleTagsChange} />
-                                <label class="form-check-label" for="inlineCheckboxh1">Reading</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                               <input class="form-check-input" type="checkbox" name="hobbies" id="inlineCheckboxh2" value="Developing" onChange={this.handleTagsChange} />
-                                <label class="form-check-label" for="inlineCheckboxh2">Developing</label>
-                             </div>
-                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="hobbies" id="inlineCheckboxh3" value="Designing" onChange={this.handleTagsChange} />
-                                <label class="form-check-label" for="inlineCheckboxh3">Desiging</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="hobbies" id="inlineCheckboxh4" value="Drawing" onChange={this.handleTagsChange} />
-                                <label class="form-check-label" for="inlineCheckboxh4">Drawing</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="hobbies" id="inlineCheckboxh5" value="Painting" onChange={this.handleTagsChange} />
-                                <label class="form-check-label" for="inlineCheckboxh5">Painting</label>
+                            <label className="col-sm-2 control-label required" htmlFor="blog_post_title">Body</label>
+                            <div className="col-sm-10">
+                                <textarea rows="5" cols="70" className="form-control" name="body" id="body"
+                                    onChange={this.handleBodyChange} /><br />
                             </div>
                         </div>
-                    </div>
+                        <div className="col-8">
+                            <label className="btn btn-default p-0">
+                                <input type="file" accept="image/*" onChange={this.selectFile} />
+                            </label>
+                        </div>
+
+                        <div className="form-group">
+                            <label className="col-sm-2 control-label required" htmlFor="blog_post_link">Link</label>
+                            <div className="col-sm-10">
+                                <input type="text"
+                                    id="blog_post_link"
+                                    className="form-control"
+                                    onChange={this.handleLinkChange}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="form-group">
+                            <label className="col-sm-2 control-label required" htmlFor="blog_post_title">Tags</label><br></br>
+                            <div className="col-sm-10">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="hobbies" id="inlineCheckboxh1" value="Reading" onChange={this.handleTagsChange} />
+                                    <label class="form-check-label" for="inlineCheckboxh1">Reading</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="hobbies" id="inlineCheckboxh2" value="Developing" onChange={this.handleTagsChange} />
+                                    <label class="form-check-label" for="inlineCheckboxh2">Developing</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="hobbies" id="inlineCheckboxh3" value="Designing" onChange={this.handleTagsChange} />
+                                    <label class="form-check-label" for="inlineCheckboxh3">Desiging</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="hobbies" id="inlineCheckboxh4" value="Drawing" onChange={this.handleTagsChange} />
+                                    <label class="form-check-label" for="inlineCheckboxh4">Drawing</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="hobbies" id="inlineCheckboxh5" value="Painting" onChange={this.handleTagsChange} />
+                                    <label class="form-check-label" for="inlineCheckboxh5">Painting</label>
+                                </div>
+                            </div>
+                        </div>
 
 
                         <button type="submit" className="btn btn-primary btn-block btn-lg" onClick={this.handleSubmit}>CREATE</button>
@@ -209,7 +265,7 @@ class CreatePost extends Component {
             </div>
             <br /><br /><br /><br /><br /><br />
         </div>
-        
+
         );
     }
 }

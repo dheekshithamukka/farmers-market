@@ -162,3 +162,13 @@ color: #020202;
 .cropList {
   font-size: 20px;
 }
+
+.imageUrl {
+  width: 80%;
+  height: 100%;
+
+}
+
+.yt-link {
+  margin-left: 10%;
+}

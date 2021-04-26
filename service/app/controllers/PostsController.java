@@ -72,7 +72,6 @@ public class PostsController extends Controller {
     }
 
     public CompletionStage<Result> newsfeed(Long uid) {
-        System.out.println("samhitha");
         return postsRepository.listallposts(uid).thenApplyAsync(postsStream -> {
             //System.out.println(toJson(postsStream.collect(Collectors.toList())));
             return ok(toJson(postsStream.collect(Collectors.toList())));

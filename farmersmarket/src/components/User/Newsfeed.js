@@ -23,7 +23,7 @@ class Newsfeed extends Component {
         };
     }
     async componentDidMount() {
-        
+
         /*await fetch('http://localhost:9000/getTags/'+this.state.id)
         .then(response => response.json())
         .then(data => {
@@ -58,11 +58,27 @@ class Newsfeed extends Component {
             console.log("in render list: " + farmer);
             return (
                 <div className="mb-3">
-                <div key={item.id} className="auth-inner" >
-                    {/* <br /> */}
-                    Title : {item.title} <br />
-                    Body : {item.body} 
-                </div>
+                    <div key={item.id} className="auth-inner" >
+
+                        <h1> {item.title} </h1>  <hr />
+                        {item.body} <br /><br />
+                        {item.imageUrl
+                            ?
+                            <center><img src={item.imageUrl} alt="No image" className="imageUrl" />
+                            </center>
+
+                            :
+                            <br />
+                        }
+                            <br />
+
+                            {item.link 
+                        ?
+                        <iframe className="yt-link" width="510" height="315" src={`https://www.youtube.com/embed/${item.link}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        :
+                        <br /> 
+                        }
+                    </div>
                 </div>
             )
         })
@@ -75,13 +91,13 @@ class Newsfeed extends Component {
 
         return (
 
-            <div 
+            <div
             // className="auth-inner"
             >
                 <Nav uid={uid} />
                 <br />
                 {this.state.posts.length == 0 && <h3 className="auth-inner">No Posts Yet</h3>}
-                <hr /> 
+                <hr />
                 <ul>
                     {this.renderList(this.state.id)}
                 </ul>

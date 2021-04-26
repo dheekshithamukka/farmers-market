@@ -95,4 +95,5 @@ public class Register {
         this.status = status;
     }
 
+
 }
