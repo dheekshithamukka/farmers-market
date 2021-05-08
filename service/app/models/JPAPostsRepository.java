@@ -120,6 +120,24 @@ public class JPAPostsRepository implements PostsRepository {
         return tags.stream();
     }
 
+    @Override
+    public CompletionStage<JsonNode> getNames(Long id) {
+        return supplyAsync(() -> wrap(em -> getNames(em, id)), executionContext);
+    }
+
+    private JsonNode getNames(EntityManager em, Long id) {
+        //String tags = (String) em.createQuery("select r.name from Register r where r.id=:id", Register.class).setParameter("id", id).getSingleResult();
+        ObjectNode json = null;
+        String name = (String)em.createQuery("select r.name from Register r where r.id=:id").setParameter("id", id).getSingleResult();
+        try {
+            json = (ObjectNode) new ObjectMapper().readTree("{ \"name\" : \"" + name + "\"}");
+            System.out.println(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
+
 
     private <T> T wrap(Function<EntityManager, T> function) {
         return jpaApi.withTransaction(function);

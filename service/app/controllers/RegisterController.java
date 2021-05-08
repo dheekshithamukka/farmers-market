@@ -99,6 +99,12 @@ public class RegisterController extends Controller {
         }, ec.current());
     }
 
+    public CompletionStage<Result> viewProfile(Long id) {
+        return registerRepository.viewProfile(id).thenApplyAsync(profile -> {
+            return ok(toJson(profile));
+        }, ec.current());
+    }
+
     public CompletionStage<Result> updateRegister(Long id){
         JsonNode js = request().body().asJson();
         String name = js.get("name").asText();

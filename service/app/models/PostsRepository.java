@@ -25,4 +25,6 @@ public interface PostsRepository {
 
     CompletionStage<Stream<Tags>> getTags(Long id);
 
+    CompletionStage<JsonNode> getNames(Long id);
+
 }

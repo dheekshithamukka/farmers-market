@@ -87,7 +87,7 @@ class CreatePost extends Component {
         formData.append("file", this.state.currentFile);
         formData.append("upload_preset", "FarmersMarket");
 
-        await Axios.post("https://api.cloudinary.com/v1_1/dpt8wpg3a/image/upload", formData).then((response => {
+        await Axios.post("https://api.cloudinary.com/v1_1/dwmctsagk/image/upload", formData).then((response => {
             // console.log(response);
             this.setState({
                 imageUrl: response.data.url
@@ -100,8 +100,15 @@ class CreatePost extends Component {
 
         var video_id = url.split("v=")[1].substring(0, 11)
     }
-        // console.log(video_id);
-        // console.log(this.state)
+        var date = new Date();
+        let options = {  
+            year: "numeric", month: "short",  
+            day: "numeric", hour: "2-digit", minute: "2-digit"  
+        };  
+        
+        var dateTime = date.toLocaleTimeString("en-us", options);
+        dateTime = dateTime.toString();
+
         var body = {
             uid: this.state.uid,
             role: this.state.role,
@@ -109,7 +116,8 @@ class CreatePost extends Component {
             body: this.state.body,
             tags: this.state.tags,
             imageUrl: this.state.imageUrl,
-            link: video_id
+            link: video_id,
+            dateTime: dateTime
         }
         console.log(body);
         if (this.state.title == "") {

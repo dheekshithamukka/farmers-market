@@ -82,7 +82,7 @@ public class Register {
     public Long getNumrating() { return numrating;  }
 
     public void setNumrating(Long rating) {
-        this.numrating = numrating;
+        this.numrating = 0L;
     }
 
     public String status;
@@ -94,6 +94,5 @@ public class Register {
     public void setStatus(String status) {
         this.status = status;
     }
-
 
 }

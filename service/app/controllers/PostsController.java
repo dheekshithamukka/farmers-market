@@ -30,6 +30,8 @@ public class PostsController extends Controller {
     private final PostsRepository postsRepository;
     private final HttpExecutionContext ec;
     private final FormFactory formFactory;
+    private final RegisterRepository registerRepository;
+    private final RegisterController registerController;
     private final InterestsRepository interestsRepository;
     private final InterestsController interestsController;
     private final TagsRepository tagsRepository;
@@ -39,6 +41,8 @@ public class PostsController extends Controller {
     @Inject
     public PostsController(FormFactory formFactory,
                            PostsRepository postsRepository,
+                           RegisterRepository registerRepository,
+                           RegisterController registerController,
                            TagsController tagsController,
                            TagsRepository tagsRepository,
                            InterestsController interestsController,
@@ -48,6 +52,8 @@ public class PostsController extends Controller {
         this.postsRepository = postsRepository;
         this.tagsController=tagsController;
         this.tagsRepository=tagsRepository;
+        this.registerController=registerController;
+        this.registerRepository=registerRepository;
         this.interestsController=interestsController;
         this.interestsRepository=interestsRepository;
         this.ec = ec;
@@ -82,6 +88,13 @@ public class PostsController extends Controller {
         return postsRepository.getTags(id).thenApplyAsync(tagsStream -> {
             //System.out.println(toJson(interests));
             return ok(toJson(tagsStream.collect(Collectors.toList())));
+        }, ec.current());
+    }
+
+    public CompletionStage<Result> getNames(Long id) {
+        return postsRepository.getNames(id).thenApplyAsync(name -> {
+            //System.out.println(toJson(interests));
+            return ok(toJson(name));
         }, ec.current());
     }
 

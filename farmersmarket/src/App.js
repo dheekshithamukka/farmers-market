@@ -18,6 +18,7 @@ import CropCheck from "./components/User/cropCheck.js";
 import CropBid from "./components/User/cropBid.js";
 import UpdateBid from "./components/User/updateBid.js";
 import UpdateProfile from "./components/home/updateProfile.js";
+import ViewProfile from "./components/home/viewProfile.js";
 import ViewPosts from "./components/User/ViewPosts.js";
 import Newsfeed from "./components/User/Newsfeed.js";
 import Bids from './components/User/bids.js';
@@ -72,6 +73,7 @@ class App extends Component {
           <Route path="/cropBid/:id/:fid/:buyerId" component= { CropBid }/>
           <Route path="/updateBid/:id/:fid/:buyerId" component= { UpdateBid }/>
           <Route path="/updateProfile/:id" component= { UpdateProfile }/>
+          <Route path="/viewProfile/:id" component= { ViewProfile }/>
           <Route path="/viewPosts/:id/:role" component= { ViewPosts }/>
           <Route path="/newsfeed/:id" component= { Newsfeed }/>
           <Route path="/bids/:cid/:fid" component= { Bids }/>

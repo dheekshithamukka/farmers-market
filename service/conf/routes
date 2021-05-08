@@ -69,3 +69,5 @@ POST    /registerInterests              controllers.InterestsController.addInter
 POST    /registerTags                   controllers.TagsController.addTags()
 GET     /newsfeed/:id                   controllers.PostsController.newsfeed(id: Long)
 POST    /updateInterests                controllers.InterestsController.updateInterests()
+GET     /viewProfile/:id                controllers.RegisterController.viewProfile(id: Long)
+GET     /getNames/:id                   controllers.PostsController.getNames(id: Long)

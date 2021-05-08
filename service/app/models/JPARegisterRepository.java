@@ -45,6 +45,11 @@ public class JPARegisterRepository implements RegisterRepository {
     }
 
     @Override
+    public CompletionStage<Register> viewProfile(Long id) {
+        return supplyAsync(() -> wrap(em -> viewProfile(em, id)), executionContext);
+    }
+
+    @Override
     public String sendResetLink(String email){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("defaultPersistenceUnit");
         EntityManager em = entityManagerFactory.createEntityManager();
@@ -124,6 +129,11 @@ public class JPARegisterRepository implements RegisterRepository {
 
     private Register getFarmer(EntityManager em, Long fid) {
         Register register = em.createQuery("select r from Register r where r.id=:fid", Register.class).setParameter("fid", fid).getSingleResult();
+        return register;
+    }
+
+    private Register viewProfile(EntityManager em, Long id) {
+        Register register = em.createQuery("select r from Register r where r.id=:id", Register.class).setParameter("id", id).getSingleResult();
         return register;
     }
 

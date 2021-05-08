@@ -134,11 +134,12 @@ class Navigation extends Component {
 
                         {this.state.role != 'admin' &&
                         <Nav.Link className="notification" href={"/grievance/"+this.state.uid+'/' + this.state.role}>&nbsp;GRIEVANCE&nbsp;</Nav.Link>}
-                        <Nav.Link className="notification" href={"/create-post/"+this.state.uid+'/' + this.state.role}>&nbsp;CREATE POST&nbsp;</Nav.Link>
+                        {this.state.role != 'buyer' && <Nav.Link className="notification" href={"/create-post/"+this.state.uid+'/' + this.state.role}>&nbsp;CREATE POST&nbsp;</Nav.Link>}
                         <NavDropdown className="notification" title={window.localStorage.getItem("username")} id="basic-nav-dropdown">
-                            <NavDropdown.Item href={"/updateProfile/" + this.state.uid}>Update Profile</NavDropdown.Item>
-                            <NavDropdown.Item href={"/viewPosts/" + this.state.uid +'/' + this.state.role}>My Posts</NavDropdown.Item>
-                            <NavDropdown.Item href={"/newsfeed/" + this.state.uid}>Newsfeed</NavDropdown.Item>
+                        {this.state.role != 'admin' && <NavDropdown.Item href={"/viewProfile/" + this.state.uid}>View Profile</NavDropdown.Item>}
+                        {this.state.role != 'admin' && this.state.role != 'buyer' && <NavDropdown.Item href={"/updateProfile/" + this.state.uid}>Update Profile</NavDropdown.Item>}
+                        {this.state.role != 'buyer' && <NavDropdown.Item href={"/viewPosts/" + this.state.uid +'/' + this.state.role}>My Posts</NavDropdown.Item>}
+                            {this.state.role != 'admin' && this.state.role != 'buyer' && <NavDropdown.Item href={"/newsfeed/" + this.state.uid}>Newsfeed</NavDropdown.Item>}
                             <NavDropdown.Item href="/Home" onClick={() => window.sessionStorage.clear() }>Sign out</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
