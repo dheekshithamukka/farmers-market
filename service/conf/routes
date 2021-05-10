@@ -73,4 +73,4 @@ GET     /viewProfile/:id                controllers.RegisterController.viewProfi
 GET     /getNames/:id                   controllers.PostsController.getNames(id: Long)
 
 
-GET     /viewMap/:stateName/:cropName   controllers.UncheckedCropController.viewMap(stateName: String, cropName: String)
+GET     /viewMap/:stateName/:cropName/:tp   controllers.UncheckedCropController.viewMap(stateName: String, cropName: String, tp: Integer)

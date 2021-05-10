@@ -25,5 +25,5 @@ public interface UncheckedCropRepository {
 
     UncheckedCrop getUCrop(Long cid);
 
-    CompletionStage<Stream<Object[]>> viewMap(String stateName, String cropName);
+    CompletionStage<Stream<Object[]>> viewMap(String stateName, String cropName, Integer tp);
 }

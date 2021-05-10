@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import './UserHome.css';
-import Form from 'react-bootstrap/Form';
-import { Container } from "react-bootstrap";
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
 import Nav from './nav.js';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
@@ -32,7 +27,7 @@ class ViewMap extends Component {
         this.state = {
             stateName: '',
             cropName: '',
-            tp: '',
+            tp: 0,
             locations: [],
 
         }
@@ -112,39 +107,51 @@ class ViewMap extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <Nav />
                 <form className="map">
-                    <div className="map">
-                        <label>State Name</label>
-                        <input type="Text" name="name" id="examplename" placeholder="Enter state name"
-                            value={this.state.name} onChange={this.handleStateNameChange}
-                        />
-                    </div>
-                    <div >
-                        <label>Crop Name</label>
-                        <input type="Text" name="name" id="examplename" placeholder="Enter crop name"
-                            value={this.state.name} onChange={this.handleCropNameChange}
-                        />
-                    </div>
-                    <div >
-                        <label for="tp">Choose time period :</label>
+                    <div className="row">
+                        <div className="col-4 mt-5">
 
-                        <select name="tp" id="tp" onChange={this.handleTpChange} >
-                            <option value=""></option>
-                            <option value="1">1 month</option>
-                            <option value="2">2 months</option>
-                            <option value="3">3 months</option>
-                            <option value="4">4 months</option>
-                            <option value="5">5 months</option>
-                            <option value="4">6 months</option>
+                            <div className="ml-5">
+                                <label>State Name: </label>
+                                <input type="Text" name="name" id="examplename" placeholder="Enter state name"
+                                    value={this.state.name} onChange={this.handleStateNameChange}
+                                />
+                            </div>
+                        </div>
+                        <div className="col-4 mt-5">
 
-                        </select>
+                            <div >
+                                <label>Crop Name: </label>
+                                <input type="Text" name="name" id="examplename" placeholder="Enter crop name"
+                                    value={this.state.name} onChange={this.handleCropNameChange}
+                                />
+                            </div>
+                        </div>
+                        <div className="col-4 mt-5">
+
+                            <div >
+                                <label for="tp">Choose time period: </label>
+
+                                <select name="tp" id="tp" onChange={this.handleTpChange} >
+                                    <option value=""></option>
+                                    <option value="1">1 month</option>
+                                    <option value="2">2 months</option>
+                                    <option value="3">3 months</option>
+                                    <option value="4">4 months</option>
+                                    <option value="5">5 months</option>
+                                    <option value="4">6 months</option>
+
+                                </select>
+                            </div>
+
+                        </div>
                     </div>
 
-                    {/* <center>   */}
-                    <button type="submit" className="btn btn-primary btn-xs" onClick={this.handleSubmit}>SUBMIT</button>
-                    {/* </center>  */}
+                    <center>  
+                    <button type="submit" className="btn btn-primary btn-xs mb-3 mt-3" onClick={this.handleSubmit}>SUBMIT</button>
+                    </center> 
                 </form>
 
 
@@ -152,8 +159,6 @@ class ViewMap extends Component {
                     ref={this.mapRef}
                     center={position}
                     zoom={6}
-                    // style={{ height: "50vh", width: "100%" }}
-                    // style={{ height: '800px', width: '100%' }}
                     onClick={this.handleClick}
                 >
 
@@ -166,7 +171,7 @@ class ViewMap extends Component {
                     {
                         this.state.locations.map((m, index) => (
                             <Marker position={[m[3], m[4]]} icon={myIcon}>
-                                <Popup>Location:{m[0]}<br />Quantity:{parseInt(m[2])}<br />Area:{m[1]}</Popup>
+                                <Popup>Location: {m[0]}<br />Quantity: {parseInt(m[2])} quintals<br />Area: {m[1]} acres</Popup>
                             </Marker>
                         ))
                     }

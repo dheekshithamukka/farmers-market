@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3eef6e8-a30e-4275-935c-3a977402ed68" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../farmersmarket/src/components/User/ViewMap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../farmersmarket/src/components/User/map.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../farmersmarket/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../farmersmarket/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../farmersmarket/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../farmersmarket/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../farmersmarket/src/components/User/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/src/components/User/nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../farmersmarket/src/components/home/crop.js" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/src/components/home/crop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../farmersmarket/src/components/User/ViewMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/src/components/User/ViewMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../farmersmarket/src/components/User/map.css" beforeDir="false" afterPath="$PROJECT_DIR$/../farmersmarket/src/components/User/map.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/UncheckedCropController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/UncheckedCropController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Crop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/JPAUncheckedCropRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/JPAUncheckedCropRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/UncheckedCrop.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/UncheckedCrop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/UncheckedCropRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/UncheckedCropRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/utils/EmailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/EmailUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/application.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

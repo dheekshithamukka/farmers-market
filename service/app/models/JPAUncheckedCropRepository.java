@@ -41,8 +41,8 @@ public class JPAUncheckedCropRepository implements UncheckedCropRepository {
     }
 
     @Override
-    public CompletionStage<Stream<Object[]>> viewMap(String stateName, String cropName) {
-        return supplyAsync(() -> wrap(em -> viewMap(em, stateName, cropName)), executionContext);
+    public CompletionStage<Stream<Object[]>> viewMap(String stateName, String cropName, Integer tp) {
+        return supplyAsync(() -> wrap(em -> viewMap(em, stateName, cropName, tp)), executionContext);
     }
 
     @Override
@@ -106,7 +106,7 @@ public class JPAUncheckedCropRepository implements UncheckedCropRepository {
         return uncheckedCrops.stream();
     }
 
-    private Stream<Object[]> viewMap(EntityManager em, String stateName, String cropName) {
+    private Stream<Object[]> viewMap(EntityManager em, String stateName, String cropName, Integer tp) {
         //System.out.println(stateName);
         //System.out.println(cropName);
         /*List<UncheckedCrop> sumArea = em.createQuery("select sum(area) from UncheckedCrop c where c.stateLocation=:stateName and c.name=:cropName group by c.location", UncheckedCrop.class)
@@ -115,24 +115,19 @@ public class JPAUncheckedCropRepository implements UncheckedCropRepository {
                 .getResultList();
         System.out.println(sumArea);*/
 
-        List<UncheckedCrop> uncheckedCrops = em.createQuery("select c from UncheckedCrop c where c.stateLocation=:stateName and c.name=:cropName", UncheckedCrop.class)
+        /*List<UncheckedCrop> uncheckedCrops = em.createQuery("select c from UncheckedCrop c where c.stateLocation=:stateName and c.name=:cropName", UncheckedCrop.class)
                 .setParameter("stateName",stateName)
                 .setParameter("cropName",cropName)
-                .getResultList();
+                .getResultList();*/
 
-
-        List<Object[]> uncheckedCrops1 = em.createQuery("select c.location, sum(c.area), sum(c.quantitymax), c.latitude, c.longitude from UncheckedCrop c where c.stateLocation=:stateName and c.name=:cropName group by c.location, c.latitude, c.longitude", Object[].class)
+        System.out.println(tp);
+        stateName = stateName.toLowerCase();
+        cropName = cropName.toLowerCase();
+        List<Object[]> uncheckedCrops1 = em.createQuery("select c.location, sum(c.area), sum(c.quantitymax), c.latitude, c.longitude from UncheckedCrop c where lower(c.stateLocation)=:stateName and lower(c.name)=:cropName and TIMESTAMPDIFF(month, c.starttime, c.endtime) <=: tp group by c.location, c.latitude, c.longitude ", Object[].class)
                 .setParameter("stateName",stateName)
                 .setParameter("cropName",cropName)
+                .setParameter("tp",tp)
                 .getResultList();
-
-        for (Object[] obj : uncheckedCrops1){
-            System.out.println(obj[0]);
-            System.out.println(obj[1]);
-            System.out.println(obj[2]);
-            System.out.println(obj[3]);
-            System.out.println(obj[4]);
-        }
         return uncheckedCrops1.stream();
     }
 
