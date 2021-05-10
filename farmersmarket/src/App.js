@@ -20,6 +20,7 @@ import UpdateBid from "./components/User/updateBid.js";
 import UpdateProfile from "./components/home/updateProfile.js";
 import ViewProfile from "./components/home/viewProfile.js";
 import ViewPosts from "./components/User/ViewPosts.js";
+import ViewMap from "./components/User/ViewMap.js";
 import Newsfeed from "./components/User/Newsfeed.js";
 import Bids from './components/User/bids.js';
 import BuyerProfile from './components/User/BuyerProfile.js';
@@ -75,6 +76,7 @@ class App extends Component {
           <Route path="/updateProfile/:id" component= { UpdateProfile }/>
           <Route path="/viewProfile/:id" component= { ViewProfile }/>
           <Route path="/viewPosts/:id/:role" component= { ViewPosts }/>
+          <Route path="/viewMap" component= { ViewMap }/>
           <Route path="/newsfeed/:id" component= { Newsfeed }/>
           <Route path="/bids/:cid/:fid" component= { Bids }/>
           <Route path="/buyerProfile/:buyerId/:bid" component= { BuyerProfile }/>

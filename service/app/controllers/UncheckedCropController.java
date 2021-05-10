@@ -115,4 +115,11 @@ public class UncheckedCropController extends Controller {
         }, ec.current());
     }
 
+    public CompletionStage<Result> viewMap(String stateName, String cropName) {
+        return uncheckedCropRepository.viewMap(stateName, cropName).thenApplyAsync(mapStream -> {
+            //System.out.println(toJson(mapStream.collect(Collectors.toList())));
+            return ok(toJson(mapStream.collect(Collectors.toList())));
+        }, ec.current());
+    }
+
 }

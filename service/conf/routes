@@ -71,3 +71,6 @@ GET     /newsfeed/:id                   controllers.PostsController.newsfeed(id:
 POST    /updateInterests                controllers.InterestsController.updateInterests()
 GET     /viewProfile/:id                controllers.RegisterController.viewProfile(id: Long)
 GET     /getNames/:id                   controllers.PostsController.getNames(id: Long)
+
+
+GET     /viewMap/:stateName/:cropName   controllers.UncheckedCropController.viewMap(stateName: String, cropName: String)

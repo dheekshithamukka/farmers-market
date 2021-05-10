@@ -41,6 +41,11 @@ public class JPAUncheckedCropRepository implements UncheckedCropRepository {
     }
 
     @Override
+    public CompletionStage<Stream<Object[]>> viewMap(String stateName, String cropName) {
+        return supplyAsync(() -> wrap(em -> viewMap(em, stateName, cropName)), executionContext);
+    }
+
+    @Override
     public CompletionStage<UncheckedCrop> getuc(Long cid) {
         return supplyAsync(() -> wrap(em -> getuc(em, cid)), executionContext);
     }
@@ -99,6 +104,36 @@ public class JPAUncheckedCropRepository implements UncheckedCropRepository {
     private Stream<UncheckedCrop> listc(EntityManager em) {
         List<UncheckedCrop> uncheckedCrops = em.createQuery("select c from UncheckedCrop c", UncheckedCrop.class).getResultList();
         return uncheckedCrops.stream();
+    }
+
+    private Stream<Object[]> viewMap(EntityManager em, String stateName, String cropName) {
+        //System.out.println(stateName);
+        //System.out.println(cropName);
+        /*List<UncheckedCrop> sumArea = em.createQuery("select sum(area) from UncheckedCrop c where c.stateLocation=:stateName and c.name=:cropName group by c.location", UncheckedCrop.class)
+                .setParameter("stateName",stateName)
+                .setParameter("cropName",cropName)
+                .getResultList();
+        System.out.println(sumArea);*/
+
+        List<UncheckedCrop> uncheckedCrops = em.createQuery("select c from UncheckedCrop c where c.stateLocation=:stateName and c.name=:cropName", UncheckedCrop.class)
+                .setParameter("stateName",stateName)
+                .setParameter("cropName",cropName)
+                .getResultList();
+
+
+        List<Object[]> uncheckedCrops1 = em.createQuery("select c.location, sum(c.area), sum(c.quantitymax), c.latitude, c.longitude from UncheckedCrop c where c.stateLocation=:stateName and c.name=:cropName group by c.location, c.latitude, c.longitude", Object[].class)
+                .setParameter("stateName",stateName)
+                .setParameter("cropName",cropName)
+                .getResultList();
+
+        for (Object[] obj : uncheckedCrops1){
+            System.out.println(obj[0]);
+            System.out.println(obj[1]);
+            System.out.println(obj[2]);
+            System.out.println(obj[3]);
+            System.out.println(obj[4]);
+        }
+        return uncheckedCrops1.stream();
     }
 
     private UncheckedCrop del(EntityManager em, Long cid) {

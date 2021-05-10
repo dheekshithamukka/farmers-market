@@ -21,7 +21,7 @@ public class EmailUtil {
         email.setSubject(subject);
         email.setTo(to);
         email.setBodyHtml(bodyHtml);
-        email.setFrom("gnitsfarmersmarket@gmail.com");
+        email.setFrom("dheekshithamukka@gmail.com");
         mailerClient.send(email);
     }
 }

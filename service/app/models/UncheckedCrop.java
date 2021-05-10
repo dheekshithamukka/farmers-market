@@ -31,6 +31,27 @@ public class UncheckedCrop {
         this.name = name;
     }
 
+    public String stateLocation;
+
+    public String getStateLocation() {
+        return stateLocation;
+    }
+
+    public void setStateLocation(String stateLocation) {
+        this.stateLocation = stateLocation;
+    }
+
+
+    public String district;
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
     public String location;
 
     public String getLocation() {
@@ -122,7 +143,27 @@ public class UncheckedCrop {
     public void setQuantitymax(Float quantitymax) {
         this.quantitymax = quantitymax;
     }
-    
+
+    public Float latitude;
+
+    public Float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Float latitude) {
+        this.latitude = latitude;
+    }
+
+    public Float longitude;
+
+    public Float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
+    }
+
     public Long fid;
 
     public Long getFid() {
@@ -172,6 +213,27 @@ public class UncheckedCrop {
     public void setTotalPayable(Long totalPayable) {
         this.totalPayable = totalPayable;
     }
+
+    /*public Float areaSum;
+
+    public Float getAreaSum() {
+        return areaSum;
+    }
+
+    public void setAreaSum(Float areaSum) {
+        this.areaSum = 0.0;
+    }
+
+    public Float quantitySum;
+
+    public Float getQuantitySum() {
+        return quantitySum;
+    }
+
+    public void setQuantitySum(Float quantitySum) {
+        this.quantitySum = 0.0;
+    }*/
+
 
 }
 
