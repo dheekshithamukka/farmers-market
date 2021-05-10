@@ -6,23 +6,10 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 
-// import Geocode from "react-geocode";
-// import { GoogleComponent } from 'react-google-location'
 
-// set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-// Geocode.setApiKey("AIzaSyDBRF7jgWTnK1LEnN-x55HLgbylOLbxpSk");
-
-// set response language. Defaults to english.
-// Geocode.setLanguage("en");
-
-
-// const API_KEY = AIzaSyDBRF7jgWTnK1LEnN-x55HLgbylOLbxpSk;
 
 
 var body;
-
-
-//var uid = window.uid;
 
 var dt = new Date();
 var month = dt.getMonth() + 1;

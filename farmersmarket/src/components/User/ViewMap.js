@@ -32,12 +32,14 @@ class ViewMap extends Component {
         this.state = {
             stateName: '',
             cropName: '',
+            tp: '',
             locations: [],
 
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleStateNameChange = this.handleStateNameChange.bind(this);
         this.handleCropNameChange = this.handleCropNameChange.bind(this);
+        this.handleTpChange = this.handleTpChange.bind(this);
 
     }
 
@@ -53,13 +55,18 @@ class ViewMap extends Component {
             cropName: event.target.value
         })
     }
+    handleTpChange = event => {
+        this.setState({
+            tp: event.target.value
+        })
+    }
 
-    handleClick = (e) => {
-        this.props.setMarker({
-            latitude: e.latlng.lat,
-            longitude: e.latlng.lng
-        });
-    };
+    // handleClick = (e) => {
+    //     this.props.setMarker({
+    //         latitude: e.latlng.lat,
+    //         longitude: e.latlng.lng
+    //     });
+    // };
 
     async handleSubmit(event) {
         event.preventDefault();
@@ -71,8 +78,12 @@ class ViewMap extends Component {
             alert('Please enter the crop name')
         }
 
+        else if (this.state.tp == "") {
+            alert('Please enter the time period')
+        }
+
         else {
-            const url = "http://localhost:9000/viewMap/" + this.state.stateName + '/' + this.state.cropName;
+            const url = "http://localhost:9000/viewMap/" + this.state.stateName + '/' + this.state.cropName + '/' + this.state.tp;
             let headers = new Headers();
 
             headers.append('Content-Type', 'application/json');
@@ -116,6 +127,21 @@ class ViewMap extends Component {
                             value={this.state.name} onChange={this.handleCropNameChange}
                         />
                     </div>
+                    <div >
+                        <label for="tp">Choose time period :</label>
+
+                        <select name="tp" id="tp" onChange={this.handleTpChange} >
+                            <option value=""></option>
+                            <option value="1">1 month</option>
+                            <option value="2">2 months</option>
+                            <option value="3">3 months</option>
+                            <option value="4">4 months</option>
+                            <option value="5">5 months</option>
+                            <option value="4">6 months</option>
+
+                        </select>
+                    </div>
+
                     {/* <center>   */}
                     <button type="submit" className="btn btn-primary btn-xs" onClick={this.handleSubmit}>SUBMIT</button>
                     {/* </center>  */}
@@ -136,7 +162,7 @@ class ViewMap extends Component {
                         attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                     />
 
-                    
+
                     {
                         this.state.locations.map((m, index) => (
                             <Marker position={[m[3], m[4]]} icon={myIcon}>
